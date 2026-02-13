@@ -61,15 +61,16 @@ button{
   <button id="no">NO</button>
 </div>
 
-<!-- Soft music and click sound -->
-<audio id="bgmusic" loop src="https://assets.codepen.io/3/soft-music.mp3"></audio>
+<!-- Soft click sound -->
 <audio id="clickSound" src="https://assets.codepen.io/3/click.mp3"></audio>
+
+<!-- YouTube background audio embed (hidden) -->
+<iframe width="0" height="0" src="https://www.youtube.com/embed/9xRH7aOP_yM?autoplay=1&loop=1&playlist=9xRH7aOP_yM" frameborder="0" allow="autoplay" style="display:none;"></iframe>
 
 <script>
 const y = document.getElementById("yes"),
       n = document.getElementById("no"),
       b = document.getElementById("box"),
-      bgmusic = document.getElementById("bgmusic"),
       clickSound = document.getElementById("clickSound");
 
 const msgs = [
@@ -120,7 +121,7 @@ y.onclick = () => {
   y.disabled = true;
   n.disabled = true;
 
-  // Show instant "Wow... that's fast! Crush mo siguro ako"
+  // Show instant "Wow... that's fast!"
   const tempMsg = document.createElement("h1");
   tempMsg.textContent = "Wow... that's fast! Crush mo siguro ako";
   tempMsg.style.color = "#ff4d6d";
@@ -129,7 +130,6 @@ y.onclick = () => {
   b.appendChild(tempMsg);
 
   setTimeout(() => {
-    // Final love message
     vibrate([200,100,200]);
     b.innerHTML = `
       <div style="font-size:4rem">💖✨</div>
@@ -139,12 +139,8 @@ y.onclick = () => {
       </p>`;
     for(let j=0;j<40;j++) setTimeout(heart,j*40);
 
-    // Change background to pink-yellow-purple gradient
+    // Change background to pink-bright yellow gradient
     document.body.style.background = "linear-gradient(135deg, #ffb3c1, #ffeab3)";
-
-    // Start soft music
-    bgmusic.volume = 100;
-    bgmusic.play();
   }, 1000);
 };
 </script>
